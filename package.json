@@ -10,6 +10,8 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^4.16.12"
+    "astro": "^4.16.12",
+    "reset-css": "^5.0.2",
+    "stylus": "^0.64.0"
   }
 }

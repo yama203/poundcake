@@ -1,0 +1,45 @@
+---
+//const
+const title = "POUND CAKE";
+// src/pages/index.astro
+//import module
+import { Image } from "astro:assets";
+import { getImage } from "astro:assets";
+//import style
+import "reset-css";
+import "../stylus/main.styl";
+//import image
+import logo from "../images/logo.svg";
+---
+
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <h1><a href="/"><Image src={logo} alt={title} /></a></h1>
+    <slot />
+    <footer>
+      <a href="https://www.instagram.com/pound____cake/" target="_blank">
+        <svg
+          width="30"
+          height="30"
+          viewBox="0 0 30 30"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M22.3333 7.66669H22.3466M8.33329 1.66669H21.6666C25.3485 1.66669 28.3333 4.65146 28.3333 8.33335V21.6667C28.3333 25.3486 25.3485 28.3334 21.6666 28.3334H8.33329C4.65139 28.3334 1.66663 25.3486 1.66663 21.6667V8.33335C1.66663 4.65146 4.65139 1.66669 8.33329 1.66669ZM20.3333 14.16C20.4978 15.2697 20.3083 16.403 19.7916 17.3987C19.275 18.3944 18.4575 19.2019 17.4555 19.7063C16.4534 20.2106 15.3179 20.3861 14.2103 20.2079C13.1028 20.0297 12.0796 19.5068 11.2864 18.7136C10.4932 17.9203 9.97027 16.8972 9.79205 15.7896C9.61383 14.6821 9.78938 13.5465 10.2937 12.5445C10.7981 11.5425 11.6055 10.725 12.6013 10.2083C13.597 9.69168 14.7303 9.50214 15.84 9.66669C16.9719 9.83453 18.0198 10.362 18.8289 11.1711C19.638 11.9802 20.1654 13.0281 20.3333 14.16Z"
+            stroke="#fff"
+            stroke-width="3"
+            stroke-linecap="round"
+            stroke-linejoin="round"></path>
+        </svg>
+      </a>
+    </footer>
+  </body>
+</html>

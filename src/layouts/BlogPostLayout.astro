@@ -1,0 +1,54 @@
+---
+const posts = await Astro.glob("../pages/posts/*.md");
+const sortedPosts = posts.sort((a, b) => {
+  const numA = parseInt(a.file.split("/").pop().match(/\d+/)[0]);
+  const numB = parseInt(b.file.split("/").pop().match(/\d+/)[0]);
+  return numA - numB;
+});
+
+const { frontmatter } = Astro.props;
+const currentIndex = sortedPosts.findIndex(
+  (post) => post.frontmatter.title === frontmatter.title,
+);
+const prevPost = currentIndex > 0 ? sortedPosts[currentIndex - 1] : null;
+const nextPost =
+  currentIndex < sortedPosts.length - 1 ? sortedPosts[currentIndex + 1] : null;
+
+import Layout from "../layouts/layout.astro";
+---
+
+<Layout>
+  <div class="container">
+    <div class="nav-box">
+      {
+        prevPost && (
+          <a href={prevPost.url} class="nav-btn" id="prev">
+            &larr;
+          </a>
+        )
+      }
+    </div>
+    <div id="content">
+      {
+        frontmatter.flayer && (
+          <img src={frontmatter.flayer} alt="flayer" class="hero-image" />
+        )
+      }
+      <h2>{frontmatter.title}</h2>
+      <p class="time">{frontmatter.time}</p>
+      <p class="dj">{frontmatter.dj}</p>
+      <p class="place">
+        <a href={frontmatter.placelink} target="_blank">@{frontmatter.place}</a>
+      </p>
+    </div>
+    <div class="nav-box">
+      {
+        nextPost && (
+          <a href={nextPost.url} class="nav-btn" id="next">
+            &rarr;
+          </a>
+        )
+      }
+    </div>
+  </div>
+</Layout>
