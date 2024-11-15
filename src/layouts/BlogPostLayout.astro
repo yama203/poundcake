@@ -31,7 +31,13 @@ import Layout from "../layouts/layout.astro";
     <div id="content">
       {
         frontmatter.flayer && (
-          <img src={frontmatter.flayer} alt="flayer" class="hero-image" />
+          <a
+            href={frontmatter.partylink}
+            target="_blank"
+            title={frontmatter.title}
+          >
+            <img src={frontmatter.flayer} alt="flayer" class="hero-image" />
+          </a>
         )
       }
       <h2>{frontmatter.title}</h2>
