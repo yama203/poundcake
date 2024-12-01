@@ -46,6 +46,9 @@ import Layout from "../layouts/layout.astro";
       <p class="place">
         <a href={frontmatter.placelink} target="_blank">@{frontmatter.place}</a>
       </p>
+      <div class="post">
+        <slot />
+      </div>
     </div>
     <div class="nav-box">
       {
