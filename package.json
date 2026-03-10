@@ -13,5 +13,8 @@
     "astro": "^5.15.9",
     "reset-css": "^5.0.2",
     "stylus": "^0.64.0"
+  },
+  "overrides": {
+    "rollup": ">=4.59.0"
   }
 }
