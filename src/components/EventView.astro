@@ -1,0 +1,72 @@
+---
+import { Image } from "astro:assets";
+import { render } from "astro:content";
+import { eventPath, type Event } from "../lib/events";
+
+interface Props {
+  event: Event;
+  prev?: Event;
+  next?: Event;
+}
+
+const { event, prev, next } = Astro.props;
+const { Content } = await render(event);
+const { title, time, dj, place, placelink, partylink, flyer, animated } = event.data;
+const alt = `${title} フライヤー（Instagram の告知投稿を開く）`;
+---
+
+<div class="container">
+  <div class="nav-box">
+    {
+      prev && (
+        <a href={eventPath(prev)} class="nav-btn" aria-label={`前の回：${prev.data.title}`}>
+          &larr;
+        </a>
+      )
+    }
+  </div>
+  <main id="content">
+    <a href={partylink} target="_blank" rel="noopener">
+      {
+        animated ? (
+          <img
+            src={flyer.src}
+            alt={alt}
+            width={flyer.width}
+            height={flyer.height}
+            fetchpriority="high"
+            class="hero-image"
+          />
+        ) : (
+          <Image
+            src={flyer}
+            alt={alt}
+            width={240}
+            densities={[1, 2]}
+            loading="eager"
+            fetchpriority="high"
+            class="hero-image"
+          />
+        )
+      }
+    </a>
+    <h2>{title}</h2>
+    <p class="time">{time}</p>
+    <p class="dj">{dj}</p>
+    <p class="place">
+      <a href={placelink} target="_blank" rel="noopener">@{place}</a>
+    </p>
+    <div class="post">
+      <Content />
+    </div>
+  </main>
+  <div class="nav-box">
+    {
+      next && (
+        <a href={eventPath(next)} class="nav-btn" aria-label={`次の回：${next.data.title}`}>
+          &rarr;
+        </a>
+      )
+    }
+  </div>
+</div>

@@ -25,9 +25,14 @@ body
     align-items center
     max-inline-size max-content
     margin-inline auto
-    height 100vh
-    height 100svh
+    // 低い画面（スマホ横向きなど）でも内容が切れないよう、高さは最小値で指定する
+    min-height 100vh
+    min-height 100svh
+    box-sizing border-box
+    padding-block 20px
     gap 1em
+    #content
+      max-width 240px
     .post
       margin-top 1em
       max-width  240px
@@ -35,10 +40,11 @@ body
       display block
       margin 1em 0
       width 240px
+      height auto
     h2
       margin-bottom .25em
     p
-      font-size 10px
+      font-size 12px
       line-height 1.6
   footer
     svg
@@ -47,3 +53,13 @@ body
       width 20px
       height auto
       bottom 20px
+  .not-found
+    display flex
+    flex-direction column
+    justify-content center
+    align-items center
+    gap 1em
+    min-height 100vh
+    min-height 100svh
+    h2
+      font-size 2em

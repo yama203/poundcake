@@ -1,47 +1,38 @@
-# Astro Starter Kit: Minimal
+# POUND CAKE
+
+パーティー「POUND CAKE」の告知サイト（https://p.ound.info）。Astro の静的サイトです。
+
+## 開発
+
+Node.js 22.23.4 以上が必要です（`.nvmrc` 参照）。
 
 ```sh
-npm create astro@latest -- --template minimal
+npm install
+npm run dev      # http://localhost:4321
+npm run build    # dist/ に出力
 ```
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/minimal)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/minimal)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/minimal/devcontainer.json)
+## 新しい回を追加する
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+1. フライヤー画像を `src/assets/flyers/` に置く（GIF / JPG / PNG。表示時に自動で WebP に変換されます）
+2. `src/content/events/` に連番の Markdown（例: `05.md`）を作る
 
-## 🚀 Project Structure
+```md
+---
+title: "POUND CAKE #05"
+place: seido_mart
+placelink: https://www.instagram.com/seido_mart/
+partylink: https://www.instagram.com/p/XXXXXXXX/
+time: 2025/6/1 SUN 18:00 START!!
+dj: DJ 40 / kin
+flyer: ../../assets/flyers/05.jpg
+---
 
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+（本文は任意。SoundCloud の埋め込みなども書けます）
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+トップページには、番号がいちばん大きい回が表示されます。
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+## デプロイ
 
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+`master` にプッシュすると、GitHub Actions（`.github/workflows/astro.yml`）でビルドされ、GitHub Pages に公開されます。

@@ -1,0 +1,23 @@
+---
+import Layout from "../../layouts/layout.astro";
+import EventView from "../../components/EventView.astro";
+import { getEvents, eventDescription } from "../../lib/events";
+
+export async function getStaticPaths() {
+  const events = await getEvents();
+  return events.map((event, i) => ({
+    params: { id: event.id },
+    props: { event, prev: events[i - 1], next: events[i + 1] },
+  }));
+}
+
+const { event, prev, next } = Astro.props;
+---
+
+<Layout
+  title={event.data.title}
+  description={eventDescription(event)}
+  image={event.data.still ?? event.data.flyer}
+>
+  <EventView event={event} prev={prev} next={next} />
+</Layout>
