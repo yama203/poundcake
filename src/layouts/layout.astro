@@ -34,6 +34,16 @@ const ogImage = image
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Search Console の所有権の確認（HTML タグ。Google アカウント pikey.yama で登録。値はサイトごとに違う。消すと確認が外れる。2026-11 に追加） -->
+    <meta name="google-site-verification" content="-wQmd9sxFhn2yyt8CJRxAJsM-kCjOi4JKV-wY8n2BNg" />
+    <!-- Google アナリティクス（GA4。アナリティクス アカウント「yama203（個人）」のプロパティ「POUND CAKE - GA4」。2026-11 に追加） -->
+    <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-JWRD54G5JV"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-JWRD54G5JV');
+    </script>
     <meta name="generator" content={Astro.generator} />
     <title>{pageTitle}</title>
     <meta name="description" content={description} />

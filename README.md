@@ -36,3 +36,9 @@ flyer: ../../assets/flyers/05.jpg
 ## デプロイ
 
 `master` にプッシュすると、GitHub Actions（`.github/workflows/astro.yml`）でビルドされ、GitHub Pages に公開されます。
+
+## アクセス解析・Search Console
+
+- Google アナリティクス（GA4）：アナリティクス アカウント「yama203（個人）」のプロパティ「POUND CAKE - GA4」、測定 ID `G-JWRD54G5JV`（Google アカウント pikey.yama で管理）
+- Search Console：Google アカウント pikey.yama の `https://p.ound.info/`（HTML タグで確認。値はサイトごとに違う）
+- どちらのタグも `src/layouts/layout.astro` の `<head>` に直接書いている（2026-11 追加）
